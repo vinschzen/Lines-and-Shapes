@@ -9,7 +9,7 @@ import ShapeCanvas from '../components/ShapeCanvas';
 
 const IndexPage = () => {
   const [guesses, setGuesses] = useState<React.ReactNode[]>([]);
-  const [symbols, setSymbols] = useState<[React.ReactNode, React.ReactNode]>([null, null]);
+  const [symbols, setSymbols] = useState<React.ReactNode[]>([]);
   const [isTimeoutActive, setIsTimeoutActive] = useState(false);
   const [level, setLevel] = useState(1);
 
@@ -63,14 +63,14 @@ const IndexPage = () => {
   const handleButtonClick = (index: number) => {    
     const param = symbolsArray[index];
 
-    if (guesses.length < 2) {
+    if (guesses.length < symbols.length) {
       setGuesses((prevGuesses) => [...prevGuesses, param]);
     }
   };
   
   useEffect(() => {
     const isEqual = areArraysEqual(guesses, symbols);
-    if (isEqual)
+    if (isEqual && guesses.length > 0)
     {
       
       const audio = new Audio('/assets/sfx/correct.mp3');
@@ -79,29 +79,30 @@ const IndexPage = () => {
       const timeoutId = setTimeout(() => {
         setIsTimeoutActive(false);
 
-        const getRandomInt = () => Math.floor(Math.random() * 8);
+        const result: number[] = [];
+        const newSymbols: React.ReactNode[] = [];
 
-        const firstRandomInt = getRandomInt();
-        let secondRandomInt;
-  
-        do {
-          secondRandomInt = getRandomInt();
-        } while (secondRandomInt === firstRandomInt);
-  
-        const firstSymbol = React.cloneElement(symbolsArray[firstRandomInt], { stroke: "rgb(150, 150, 150)" });
-        const secondSymbol = React.cloneElement(symbolsArray[secondRandomInt], { stroke: "rgb(150, 150, 150)" });
-  
-        setSymbols([firstSymbol, secondSymbol]);
+        const amount: number = Math.floor(Math.random() * 5) + 2;
+
+        while (result.length < amount ) {
+          const randomNum = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
+          
+          if (!result.includes(randomNum)) {
+            result.push(randomNum);
+          }
+        }
+
+        result.forEach(element => {
+          newSymbols.push( React.cloneElement(symbolsArray[element], { stroke: "rgb(150, 150, 150)" })  )
+        });
+
+        setSymbols(newSymbols);
         setGuesses([]);
         setLevel(prevLevel => prevLevel + 1);
 
       }, 1500);
 
       setIsTimeoutActive(true);
-
-      // clearTimeout(timeoutId);
-  
-     
     }
   }, [guesses, symbols]);
 
@@ -132,21 +133,25 @@ const IndexPage = () => {
 
   const randomizeCanvas = (): React.ReactNode => {
     useEffect(() => {
-      const getRandomInt = () => Math.floor(Math.random() * 8);
 
-      const firstRandomInt = getRandomInt();
-      let secondRandomInt;
+      const result: number[] = [];
+      const newSymbols: React.ReactNode[] = [];
 
-      do {
-        secondRandomInt = getRandomInt();
-      } while (secondRandomInt === firstRandomInt);
+      const amount: number = Math.floor(Math.random() * 5) + 2;
 
-      const firstSymbol = React.cloneElement(symbolsArray[firstRandomInt], { stroke: "rgb(150, 150, 150)" });
-      const secondSymbol = React.cloneElement(symbolsArray[secondRandomInt], { stroke: "rgb(150, 150, 150)" });
+      while (result.length < amount ) {
+        const randomNum = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
+        
+        if (!result.includes(randomNum)) {
+          result.push(randomNum);
+        }
+      }
 
-      // console.log(firstRandomInt, secondRandomInt)
+      result.forEach(element => {
+        newSymbols.push( React.cloneElement(symbolsArray[element], { stroke: "rgb(150, 150, 150)" })  )
+      });
 
-      setSymbols([firstSymbol, secondSymbol]);
+      setSymbols(newSymbols);
       setGuesses([]);
 
     }, []); 
@@ -162,7 +167,6 @@ const IndexPage = () => {
   return (
     <Layout title="Lines and Shapes">
       <h1>Lines and Shapes</h1>
-
       <h3>Level {level}</h3>
 
       <ShapeCanvas shape={randomizeCanvas()} />
