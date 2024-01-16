@@ -3,10 +3,10 @@ import path from 'path';
 import Image from 'next/image';
 
 const getMascotImage = () => {
-  const mascotNames = ["bigcircle", "diamond", "fourdots", "smallcircle", "square", "triangle", "vertical"];
+  const mascotNames = ["bigcircle", "diamond", "fourdots", "smallcircle", "square", "triangle", "vertical", "x"];
   const index = Math.floor(Math.random() * mascotNames.length);
 
-  const path = "/assets/mascot/" + mascotNames[index] + ".svg";
+  const path = "/assets/mascot/" + mascotNames[index] + ".ico";
 
   return path;
 };

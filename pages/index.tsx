@@ -82,7 +82,7 @@ const IndexPage = () => {
         const result: number[] = [];
         const newSymbols: React.ReactNode[] = [];
 
-        const amount: number = Math.floor(Math.random() * 5) + 2;
+        const amount: number = Math.floor(Math.random() * 3) + 2;
 
         while (result.length < amount ) {
           const randomNum = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
@@ -137,7 +137,7 @@ const IndexPage = () => {
       const result: number[] = [];
       const newSymbols: React.ReactNode[] = [];
 
-      const amount: number = Math.floor(Math.random() * 5) + 2;
+      const amount: number = Math.floor(Math.random() * 3) + 2;
 
       while (result.length < amount ) {
         const randomNum = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
@@ -181,7 +181,7 @@ const IndexPage = () => {
 
       <div className="button-grid">
         {[...Array(8)].map((_, index) => (
-          <CircularButton key={index} symbol={getSymbolByIndex(index)} onButtonClick={() => handleButtonClick(index) } />
+          <CircularButton key={index} symbol={( getSymbolByIndex(index) as JSX.Element).props.name } onButtonClick={() => handleButtonClick(index) } />
         ))}
       </div>
       
