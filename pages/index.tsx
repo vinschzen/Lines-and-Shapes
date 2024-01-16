@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from 'react';
 import Layout from "../components/Layout";
 import ReactDOM from 'react-dom';
+import Image from 'next/image';
 
 import CircularButton from '../components/CircularButton';
 import GuessesContainer from '../components/GuessesContainer';
@@ -15,32 +16,32 @@ const IndexPage = () => {
 
   const symbolsArray = [
     (
-      <svg name="square" key={0} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(242, 164, 177)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="square" key={0} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#FF7171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
       </svg>
     ),
     (
-      <svg name="triangle" key={1} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(179, 235, 232)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="triangle" key={1} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2DE786" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="12 2 21 19 3 19"/>
       </svg>
     ),
     (
-      <svg name="small-circle" key={2} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(160, 150, 210)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="small-circle" key={2} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#AE7AFB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="8"></circle>
       </svg>
     ),
     (
-      <svg name="vertical-line" key={3} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(202, 230, 189)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="vertical-line" key={3} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#FFB711" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="2" x2="12" y2="22"></line>
       </svg>
     ),
     (
-      <svg name="diamond" key={4} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(89, 125, 173)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="rotate(45 0 0)">
+      <svg name="diamond" key={4} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#FF79D8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="rotate(45 0 0)">
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
       </svg>
     ),
     (
-      <svg name="four-dots" key={5} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(202, 230, 189)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="four-dots" key={5} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#53F1F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="6" cy="6" r="1"></circle>
         <circle cx="18" cy="6" r="1"></circle>
         <circle cx="6" cy="18" r="1"></circle>
@@ -48,12 +49,12 @@ const IndexPage = () => {
       </svg>
     ),
     (
-      <svg name="big-circle" key={6} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(242, 164, 177)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="big-circle" key={6} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#FFA451" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="11"></circle>
       </svg>
     ),
     (
-      <svg name="x" key={7} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="rgb(236, 238, 141)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg name="x" key={7} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4EBBFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="20" y1="4" x2="4" y2="20"></line>
         <line x1="4" y1="4" x2="20" y2="20"></line>
       </svg>
@@ -85,7 +86,7 @@ const IndexPage = () => {
         const amount: number = Math.floor(Math.random() * 3) + 2;
 
         while (result.length < amount ) {
-          const randomNum = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
+          const randomNum = Math.floor(Math.random() * 7) ;
           
           if (!result.includes(randomNum)) {
             result.push(randomNum);
@@ -140,7 +141,7 @@ const IndexPage = () => {
       const amount: number = Math.floor(Math.random() * 3) + 2;
 
       while (result.length < amount ) {
-        const randomNum = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
+        const randomNum = Math.floor(Math.random() * 7) ;
         
         if (!result.includes(randomNum)) {
           result.push(randomNum);
@@ -166,6 +167,14 @@ const IndexPage = () => {
 
   return (
     <Layout title="Lines and Shapes">
+      <Image
+        src="/assets/bg.svg"
+        alt="Canvas SVG"
+        width={200}
+        height={200}
+        className="background"
+      />
+      
       <h1>Lines and Shapes</h1>
       <h3>Level {level}</h3>
 
