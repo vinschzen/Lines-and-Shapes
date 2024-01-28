@@ -11,7 +11,7 @@ import ShapeCanvas from '../components/ShapeCanvas';
 import style from '../styles/animation.module.css';
 
 const IndexPage = () => {
-  const [guesses, setGuesses] = useState<React.ReactNode[]>([]);
+  const [guesses, setGuesses] = useState<React.ReactElement[]>([]);
   const [symbols, setSymbols] = useState<React.ReactNode[]>([]);
   const [buttonStates, setButtonStates] = useState<boolean[]>(new Array(8).fill(false));
   const [isTimeoutActive, setIsTimeoutActive] = useState(false);
@@ -127,7 +127,6 @@ const IndexPage = () => {
 
   const handleGuessClick = (index: number) => {
     if (!isTimeoutActive) {
-      
       for (let i = 0; i < symbolsArray.length; i++) {
         if (symbolsArray[i].props.name ==  guesses[index].props.name ) {
           const newButtonStates = [...buttonStates];
