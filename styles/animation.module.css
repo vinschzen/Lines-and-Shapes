@@ -1,0 +1,66 @@
+@keyframes float-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes exit-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-500%);
+  }
+}
+
+  /* The element to apply the animation to */
+  .menuexit {
+    position: absolute;
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+    animation-name: exit-up;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+  }
+
+  .menu {
+    position: absolute;
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+  }
+
+  .about {
+    position: absolute;
+    z-index: -100;
+    width: 100%;
+    height: 76%;
+    margin: 0 auto;
+    animation-name: float-down;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+  }
+
+  .game {
+    position: absolute;
+    z-index: -100;
+    width: 100%;
+    height: 100%;
+    animation-name: float-up;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+  }
+  

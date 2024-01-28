@@ -1,25 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface CircularButtonProps {
-  symbol: string; 
+  symbol: string;
+  clicked: boolean;
   onButtonClick: () => void;
 }
 
-const CircularButton: React.FC<CircularButtonProps> = ({ symbol, onButtonClick }) => {
-  const path = "/assets/buttons/btn_" + symbol + ".svg";
+const CircularButton: React.FC<CircularButtonProps> = ({ symbol, clicked, onButtonClick }) => {
+  const imagePath = clicked ? `/assets/buttons/btn_${symbol}_clicked.png` : `/assets/buttons/btn_${symbol}.png`;
+
+  const handleClick = () => {
+    onButtonClick();
+  };
+
+  // const reset = () => {
+  //   setClicked(false);
+  // };
 
   return (
-    <div className="circular-button" onClick={ onButtonClick }>
+    <div className="circular-button" onClick={handleClick}>
       <Image
-        src={path}
-        alt="Button SVG"
+        src={imagePath}
+        alt='button'
         width={100}
         height={100}
       />
     </div>
   );
 };
-
 
 export default CircularButton;

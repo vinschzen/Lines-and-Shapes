@@ -1,15 +1,17 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Image from 'next/image';
 
 import MascotImage from '../components/MascotImage';
 
 type Props = {
   children?: ReactNode;
   title?: string;
+  className: string;
 };
 
-const Layout = ({ children, title = "This is the default title" }: Props) => (
+const Layout = ({ children, title = "This is the default title", className }: Props) => (
   <div>
     <Head>
       <MascotImage />
@@ -19,12 +21,19 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
     </Head>
     <header>
       <nav>
-        <Link href="/">Home</Link> | <Link href="/about">About</Link> |{" "}
-        <Link href="/users">Users List</Link> |{" "}
-        <a href="/api/users">Users API</a>
+        <Link href="/menu">Menu</Link> | <Link href="/game">Start</Link> | <Link href="/about">About</Link> |{" "}
       </nav>
     </header>
+    <Image
+        src="/assets/bg-menu.svg"
+        alt="Canvas SVG"
+        width={200}
+        height={200}
+        className="background"
+      />
+    <div className={className}>
     {children}
+    </div>
     {/* <footer>
       <hr />
       <span>I'm here to stay (Footer)</span>

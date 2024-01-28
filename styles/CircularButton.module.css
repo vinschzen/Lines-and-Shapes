@@ -1,6 +1,4 @@
 .circular-button {
-    width: 60px;
-    height: 60px;
     border-radius: 50%;
     background-color: #3498db;
     display: flex;
