@@ -104,7 +104,7 @@ const IndexPage = () => {
         const amount: number = Math.floor(Math.random() * 3) + 2;
 
         while (result.length < amount ) {
-          const randomNum = Math.floor(Math.random() * 7) ;
+          const randomNum = Math.floor(Math.random() * 8) ;
           if (!result.includes(randomNum)) {
             result.push(randomNum);
           }
@@ -171,7 +171,7 @@ const IndexPage = () => {
       const amount: number = Math.floor(Math.random() * 3) + 2;
 
       while (result.length < amount ) {
-        const randomNum = Math.floor(Math.random() * 7) ;
+        const randomNum = Math.floor(Math.random() * 8) ;
         
         if (!result.includes(randomNum)) {
           result.push(randomNum);

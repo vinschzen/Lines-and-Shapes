@@ -21,7 +21,7 @@ const Layout = ({ children, title = "This is the default title", className = ""}
     </Head>
     <header>
       <nav>
-        <Link href="/menu">Menu</Link> | <Link href="/game">Start</Link> | <Link href="/about">About</Link> |{" "}
+        <Link href="/">Menu</Link> | <Link href="/game">Start</Link> | <Link href="/about">About</Link> |{" "}
       </nav>
     </header>
     <Image
