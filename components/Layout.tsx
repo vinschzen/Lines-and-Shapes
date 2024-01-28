@@ -8,10 +8,10 @@ import MascotImage from '../components/MascotImage';
 type Props = {
   children?: ReactNode;
   title?: string;
-  className: string;
+  className?: string;
 };
 
-const Layout = ({ children, title = "This is the default title", className }: Props) => (
+const Layout = ({ children, title = "This is the default title", className = ""}: Props) => (
   <div>
     <Head>
       <MascotImage />
