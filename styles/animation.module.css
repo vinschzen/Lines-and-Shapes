@@ -54,6 +54,15 @@
     animation-iteration-count: 1;
   }
 
+  .mainbutton {
+    position: absolute;
+    z-index: -50;
+    cursor: pointer;
+    animation-name: float-down;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+  }
+
   .game {
     position: absolute;
     z-index: -100;
@@ -62,5 +71,14 @@
     animation-name: float-up;
     animation-duration: 1s;
     animation-iteration-count: 1;
+  }
+
+  .overlay {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    height: 96%;
+    margin: 0 auto;
+    cursor: pointer;
   }
   

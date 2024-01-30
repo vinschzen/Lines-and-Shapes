@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import path from 'path';
 import Image from 'next/image';
+import Favicon from 'next/link';
 
 const getMascotImage = () => {
   const mascotNames = ["bigcircle", "diamond", "fourdots", "smallcircle", "square", "triangle", "vertical", "x"];
@@ -15,7 +16,7 @@ const MascotImage: React.FC = () => {
     const mascotImagePath = getMascotImage();
   
     return (
-        <link rel="icon" href={mascotImagePath} />
+        <Favicon rel="icon" href={mascotImagePath} />
     );
   };
   
